@@ -101,7 +101,8 @@ public class ContentServiceImpl implements IContentService {
     public PageInfo<ContentVo> getContents(Integer p, Integer limit) {
         LOGGER.debug("Enter getContents method");
         ContentVoExample example = new ContentVoExample();
-        example.setOrderByClause("created desc");
+        // 2018-9-11 首页排序改为将最近修改的放在最先显示
+        example.setOrderByClause("modified desc");
         example.createCriteria().andTypeEqualTo(Types.ARTICLE.getType()).andStatusEqualTo(Types.PUBLISH.getType());
         PageHelper.startPage(p, limit);
         List<ContentVo> data = contentDao.selectByExampleWithBLOBs(example);
@@ -154,7 +155,7 @@ public class ContentServiceImpl implements IContentService {
         criteria.andTypeEqualTo(Types.ARTICLE.getType());
         criteria.andStatusEqualTo(Types.PUBLISH.getType());
         criteria.andTitleLike("%" + keyword + "%");
-        contentVoExample.setOrderByClause("created desc");
+        contentVoExample.setOrderByClause("modified desc");
         List<ContentVo> contentVos = contentDao.selectByExampleWithBLOBs(contentVoExample);
         return new PageInfo<>(contentVos);
     }

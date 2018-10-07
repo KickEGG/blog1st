@@ -45,6 +45,13 @@ public class ArticleController extends BaseController {
     @Resource
     private ILogService logService;
 
+    /**
+     * 管理文章列表
+     * @param page
+     * @param limit
+     * @param request
+     * @return
+     */
     @GetMapping(value = "")
     public String index(@RequestParam(value = "page", defaultValue = "1") int page,
                         @RequestParam(value = "limit", defaultValue = "15") int limit, HttpServletRequest request) {
