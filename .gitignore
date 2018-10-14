@@ -25,3 +25,6 @@ logs
 upload
 target
 tale.sql
+application.properties
+application-default.properties
+application-docker.propertiesß
