@@ -21,10 +21,11 @@ nbdist/
 .nb-gradle/
 
 ###my own###
+.properties
 logs
 upload
 target
 tale.sql
 application.properties
 application-default.properties
-application-docker.propertiesß
+application-docker.properties
